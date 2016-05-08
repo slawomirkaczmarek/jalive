@@ -40,6 +40,7 @@
     <modules>
         <module>jalive-api</module>
         <module>jalive-core</module>
+        <module>basic-elements</module>
     </modules>
 
 </project>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane id="_background" fx:id="background" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <GridPane fx:id="grid" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="320.0" style="-fx-vgap: 1em; -fx-background-color: transparent;">
+            <rowConstraints>
+                <RowConstraints percentHeight="50" />
+                <RowConstraints percentHeight="50" />
+            </rowConstraints>
+            <columnConstraints>
+                <ColumnConstraints percentWidth="100" />
+            </columnConstraints>
+            <children>
+                <Label id="_title" fx:id="title" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Label>
+                <Label id="_author" fx:id="author" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font></Label>
+            </children>
+        </GridPane>
+    </children>
+</StackPane>

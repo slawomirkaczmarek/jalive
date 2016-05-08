@@ -11,19 +11,9 @@
     </parent>
 
     <groupId>com.slawomirkaczmarek.jalive</groupId>
-    <artifactId>jalive-core</artifactId>
+    <artifactId>basic-elements</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.6.2</version>
-        </dependency>
-
         <dependency>
             <groupId>com.slawomirkaczmarek.jalive</groupId>
             <artifactId>jalive-api</artifactId>
