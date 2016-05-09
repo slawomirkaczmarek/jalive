@@ -16,13 +16,13 @@ public class PresentationViewerController {
     private AnchorPane rootPane;
 
     @FXML
-    private Button buttonFullScreen;
+    private Button fullScreenButton;
 
     public void init(PresentationManager presentationManager, Stage stage) {
         this.stage = stage;
         stage.setResizable(false);
         stage.fullScreenProperty().addListener((observable, oldValue, newValue) -> {
-            buttonFullScreen.setVisible(!newValue);
+            fullScreenButton.setVisible(!newValue);
         });
         rootPane.widthProperty().addListener((observable, oldValue, newValue) -> {
             presentationManager.setPresentationWidth(newValue.doubleValue());
@@ -31,7 +31,7 @@ public class PresentationViewerController {
             presentationManager.setPresentationHeight(newValue.doubleValue());
         });
         rootPane.getChildren().add(presentationManager.getPresentationLayout());
-        buttonFullScreen.toFront();
+        fullScreenButton.toFront();
         Scene scene = new Scene(rootPane);
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
@@ -49,7 +49,7 @@ public class PresentationViewerController {
     }
 
     @FXML
-    private void buttonFullScreenMouseClickedHandler(MouseEvent event) {
+    private void fullScreenButtonMouseClickedHandler(MouseEvent event) {
         stage.setFullScreen(true);
     }
 }

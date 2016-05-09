@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane id="_background" fx:id="background" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <BorderPane fx:id="canvas" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="360.0" prefWidth="640.0" style="-fx-background-color: transparent;">
+            <bottom>
+                <TitledPane id="_result_pane" fx:id="resultPane" expanded="false" focusTraversable="false" BorderPane.alignment="CENTER">
+                    <content>
+                        <ScrollPane prefHeight="160.0">
+                            <content>
+                                <Label id="_result" fx:id="result" focusTraversable="false">
+                                    <font>
+                                        <Font name="Consolas" size="18.0" />
+                                    </font>
+                                </Label>
+                            </content>
+                        </ScrollPane>
+                    </content>
+                    <graphic>
+                        <Button id="_compile_and_run" fx:id="compileAndRunButton" focusTraversable="false" onMouseClicked="#compileAndRunButtonMouseClickedHandler" text="Compile and run" />
+                    </graphic>
+                </TitledPane>
+            </bottom>
+            <center>
+                <Pagination id="_pagination" fx:id="pagination" focusTraversable="false" pageCount="1" style="-fx-page-information-visible: false; -fx-arrows-visible: false;" styleClass="bullet" BorderPane.alignment="CENTER" />
+            </center>
+        </BorderPane>
+    </children>
+</StackPane>

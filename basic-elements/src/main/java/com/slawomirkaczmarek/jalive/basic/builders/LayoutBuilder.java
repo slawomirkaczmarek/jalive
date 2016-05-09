@@ -1,6 +1,7 @@
 package com.slawomirkaczmarek.jalive.basic.builders;
 
 import com.slawomirkaczmarek.jalive.basic.controllers.BlankLayoutController;
+import com.slawomirkaczmarek.jalive.basic.controllers.JavaCodeSlideLayoutController;
 import com.slawomirkaczmarek.jalive.basic.controllers.LayoutController;
 import com.slawomirkaczmarek.jalive.basic.controllers.TitleSlideLayoutController;
 import com.slawomirkaczmarek.jalive.basic.enums.LayoutType;
@@ -22,6 +23,9 @@ public class LayoutBuilder {
                 break;
             case TITLE:
                 result = new TitleSlideLayoutController();
+                break;
+            case JAVA_SOURCE:
+                result = new JavaCodeSlideLayoutController();
                 break;
         }
         if (result != null) {

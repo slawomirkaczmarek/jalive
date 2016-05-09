@@ -9,7 +9,7 @@
 
 <StackPane id="_background" fx:id="background" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <GridPane fx:id="grid" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="320.0" style="-fx-vgap: 1em; -fx-background-color: transparent;">
+        <GridPane fx:id="canvas" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="320.0" style="-fx-vgap: 1em; -fx-background-color: transparent;">
             <rowConstraints>
                 <RowConstraints percentHeight="50" />
                 <RowConstraints percentHeight="50" />
