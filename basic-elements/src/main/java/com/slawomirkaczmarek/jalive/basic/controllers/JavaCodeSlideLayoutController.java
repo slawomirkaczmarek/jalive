@@ -51,11 +51,11 @@ public class JavaCodeSlideLayoutController extends LayoutController {
             return resourceClass;
         }
     }
-    
-    private static final String PAGE_NO = "{N}";
-    private static final String PAGE_START = "//#" + PAGE_NO;
-    private static final String PAGE_END = "///#" + PAGE_NO;
-    private static final String PATTERN = "^" + PAGE_START + "$.*^" + PAGE_END + "$";
+
+    private static final String PAGE_MARKER = "///";
+    private static final String TAB_MARKER = "/*TAB*/";
+    private static final String TAB = "    ";
+    private static final String NEW_LINE = "\n";
 
     @FXML
     private StackPane background;
@@ -135,7 +135,7 @@ public class JavaCodeSlideLayoutController extends LayoutController {
     private void compileAndRunButtonMouseClickedHandler(MouseEvent event) {
     	String sourceCode = source;
     	for (int i = 0; i < sourceControls.size(); i++) {
-    		sourceCode = sourceCode.replace(getPageEnd(i), sourceControls.get(i).getText());
+    		sourceCode = sourceCode.replace(PAGE_MARKER + i, sourceControls.get(i).getText());
     	}
     	String result = null;
     	try {
@@ -153,31 +153,38 @@ public class JavaCodeSlideLayoutController extends LayoutController {
     
     private void prepareCode(String source) {
     	sourceControls = new ArrayList<>();
-    	int count = 0;
-    	boolean found = false;
-    	do {
-    		Pattern pattern = Pattern.compile(PATTERN.replaceAll(PAGE_NO, String.valueOf(count)));
-    		Matcher matcher = pattern.matcher(source);
-    		if ((found = matcher.find())) {
-    			String page = matcher.group();
-    			String pageEnd = getPageEnd(count);
-    			TextArea sourceControl = new TextArea();
-    			sourceControl.setFocusTraversable(false);
-    			sourceControl.setFont(Font.font("Consolas", 20.0));
-    			sourceControl.setText(page.substring(pageEnd.length(), page.length() - pageEnd.length() - 1));
-    			sourceControls.add(sourceControl);
-    			source = source.replace(page, pageEnd);
-    			count++;
-    		}
-    	} while (found);
+        StringBuilder sourceBuilder = new StringBuilder();
+        String lines[] = source.split("\\r\\n|\\n|\\r");
+        boolean onPage = false;
+        StringBuilder pageBuilder = null;
+        for (String line : lines) {
+            if (PAGE_MARKER.equals(line.trim())) {
+                if (onPage) {
+                    TextArea sourceControl = new TextArea();
+                    sourceControl.setFocusTraversable(false);
+                    sourceControl.setFont(Font.font("Consolas", 20.0));
+                    sourceControl.setText(pageBuilder.toString());
+                    sourceControls.add(sourceControl);
+                } else {
+                    pageBuilder = new StringBuilder();
+                    sourceBuilder.append(PAGE_MARKER).append(sourceControls.size()).append(NEW_LINE);
+                }
+                onPage = !onPage;
+            } else {
+                StringBuilder stringBuilder = onPage ? pageBuilder : sourceBuilder;
+                stringBuilder.append(prepareLine(line)).append(NEW_LINE);
+            }
+        }
     	pagination.setPageFactory((pageNo) -> {
-    		return sourceControls.get(pageNo);
+    		return pageNo < sourceControls.size() ? sourceControls.get(pageNo) : null;
     	});
-    	pagination.setPageCount(count);
-    	this.source = source;
+    	pagination.setPageCount(sourceControls.size());
+    	this.source = sourceBuilder.toString();
     }
-    
-    private String getPageEnd(int pageNo) {
-    	return PAGE_END.replace(PAGE_NO, String.valueOf(pageNo));
+
+    private String prepareLine(String line) {
+        String result = line.trim();
+        result = result.replace(TAB_MARKER, TAB);
+        return result;
     }
 }

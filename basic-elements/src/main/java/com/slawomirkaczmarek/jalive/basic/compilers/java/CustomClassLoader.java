@@ -1,5 +1,6 @@
 package com.slawomirkaczmarek.jalive.basic.compilers.java;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class CustomClassLoader extends ClassLoader {
@@ -7,6 +8,7 @@ public class CustomClassLoader extends ClassLoader {
 
 	public CustomClassLoader(ClassLoader classLoader) {
 		super(classLoader);
+		compiledClasses = new HashMap<>();
 	}
 	
 	public void addClass(CompiledCode compiledCode) {
