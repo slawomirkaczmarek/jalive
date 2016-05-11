@@ -15,6 +15,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client</artifactId>
+            <version>1.22.0</version>
+        </dependency>
+        
+        <dependency>
             <groupId>com.slawomirkaczmarek.jalive</groupId>
             <artifactId>jalive-api</artifactId>
             <version>${project.version}</version>
