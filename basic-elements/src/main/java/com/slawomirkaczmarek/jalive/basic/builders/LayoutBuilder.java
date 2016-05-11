@@ -1,9 +1,6 @@
 package com.slawomirkaczmarek.jalive.basic.builders;
 
-import com.slawomirkaczmarek.jalive.basic.controllers.BlankLayoutController;
-import com.slawomirkaczmarek.jalive.basic.controllers.JavaCodeSlideLayoutController;
-import com.slawomirkaczmarek.jalive.basic.controllers.LayoutController;
-import com.slawomirkaczmarek.jalive.basic.controllers.TitleSlideLayoutController;
+import com.slawomirkaczmarek.jalive.basic.controllers.*;
 import com.slawomirkaczmarek.jalive.basic.enums.LayoutType;
 import com.slawomirkaczmarek.jalive.basic.interfaces.ResourceDefinition;
 import com.slawomirkaczmarek.jalive.resources.ResourceProvider;
@@ -26,6 +23,9 @@ public class LayoutBuilder {
                 break;
             case JAVA_SOURCE:
                 result = new JavaCodeSlideLayoutController();
+                break;
+            case REST_CALL:
+                result = new RESTCallSlideLayoutController();
                 break;
         }
         if (result != null) {

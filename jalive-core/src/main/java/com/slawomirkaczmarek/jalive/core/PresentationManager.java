@@ -149,7 +149,7 @@ public class PresentationManager implements ResourceProvider {
     private String loadStringResource(PresentationFile presentationFile, String path) throws IOException {
         String result;
         InputStream inputStream = presentationFile.readResource(path);
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
             result = reader.lines().collect(Collectors.joining("\n"));
         }
         return result;

@@ -17,61 +17,58 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane id="_background" fx:id="background" xmlns="http://javafx.com/javafx/8.0.91" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane id="_background" fx:id="background" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-      <VBox prefHeight="360.0" prefWidth="640.0" spacing="4.0">
-         <children>
-            <HBox>
-               <children>
-                  <TextField id="_address" fx:id="address" focusTraversable="false" HBox.hgrow="ALWAYS">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <Button id="_execute" fx:id="executeButton" alignment="CENTER" focusTraversable="false" mnemonicParsing="false" text="Execute">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
-            <FlowPane alignment="CENTER" prefWrapLength="0.0" style="-fx-hgap: 1em;">
-               <children>
-                  <RadioButton id="_get" fx:id="getRadioButton" focusTraversable="false" mnemonicParsing="false" text="GET">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="method" />
-                     </toggleGroup>
-                  </RadioButton>
-                  <RadioButton id="_post" fx:id="postRadioButton" focusTraversable="false" mnemonicParsing="false" text="POST" toggleGroup="$method" />
-                  <RadioButton id="_put" fx:id="putRadioButton" focusTraversable="false" mnemonicParsing="false" text="PUT" toggleGroup="$method" />
-                  <RadioButton id="_delete" fx:id="deleteRadioButton" focusTraversable="false" mnemonicParsing="false" text="DELETE" toggleGroup="$method" />
-               </children>
-            </FlowPane>
-            <GridPane style="-fx-hgap: 1em;" VBox.vgrow="ALWAYS">
-              <columnConstraints>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0" />
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints vgrow="ALWAYS" />
-              </rowConstraints>
-               <children>
-                  <Pagination id="_pagination" fx:id="pagination" focusTraversable="false" pageCount="1" style="-fx-page-information-visible: false; -fx-arrows-visible: false;" styleClass="bullet" />
-                  <ScrollPane focusTraversable="false" GridPane.columnIndex="1">
-                      <content>
-                          <Label id="_result" fx:id="result" focusTraversable="false">
-                              <font>
-                                  <Font name="Consolas" size="16.0" />
-                              </font>
-                          </Label>
-                      </content>
-                  </ScrollPane>
-               </children>
-            </GridPane>
-         </children>
-         <StackPane.margin>
-            <Insets />
-         </StackPane.margin>
-      </VBox>
+        <VBox fx:id="canvas" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="360.0" prefWidth="640.0" spacing="4.0" style="-fx-background-color: transparent;">
+            <children>
+                <HBox>
+                    <children>
+                        <TextField id="_address" fx:id="address" focusTraversable="false" HBox.hgrow="ALWAYS">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </TextField>
+                        <Button id="_execute" fx:id="executeButton" alignment="CENTER" focusTraversable="false" onMouseClicked="#executeButtonMouseClickedHandler" text="Execute">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </HBox>
+                <FlowPane alignment="CENTER" style="-fx-hgap: 1em;">
+                    <children>
+                        <RadioButton id="_get" fx:id="getRadioButton" focusTraversable="false" selected="true" text="GET">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="method" />
+                            </toggleGroup>
+                        </RadioButton>
+                        <RadioButton id="_post" fx:id="postRadioButton" focusTraversable="false" text="POST" toggleGroup="$method" />
+                        <RadioButton id="_put" fx:id="putRadioButton" focusTraversable="false" text="PUT" toggleGroup="$method" />
+                        <RadioButton id="_delete" fx:id="deleteRadioButton" focusTraversable="false" text="DELETE" toggleGroup="$method" />
+                    </children>
+                </FlowPane>
+                <GridPane style="-fx-hgap: 1em;" VBox.vgrow="ALWAYS">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="50.0" />
+                        <ColumnConstraints percentWidth="50.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints vgrow="ALWAYS" />
+                    </rowConstraints>
+                    <children>
+                        <Pagination id="_pagination" fx:id="pagination" focusTraversable="false" pageCount="1" style="-fx-page-information-visible: false; -fx-arrows-visible: false;" styleClass="bullet" />
+                        <ScrollPane focusTraversable="false" GridPane.columnIndex="1">
+                            <content>
+                                <Label id="_result" fx:id="result" focusTraversable="false">
+                                    <font>
+                                        <Font name="Consolas" size="16.0" />
+                                    </font>
+                                </Label>
+                            </content>
+                        </ScrollPane>
+                    </children>
+                </GridPane>
+            </children>
+        </VBox>
     </children>
 </StackPane>
