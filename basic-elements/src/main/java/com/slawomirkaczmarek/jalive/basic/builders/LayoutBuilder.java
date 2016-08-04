@@ -21,6 +21,9 @@ public class LayoutBuilder {
             case TITLE:
                 result = new TitleSlideLayoutController();
                 break;
+            case TITLE_AND_CONTENT:
+                result = new TitleAndContentLayoutController();
+                break;
             case JAVA_SOURCE:
                 result = new JavaCodeSlideLayoutController();
                 break;

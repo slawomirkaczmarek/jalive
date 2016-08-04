@@ -43,6 +43,9 @@ public class PresentationViewerController {
                 case LEFT:
                     presentationManager.previousSlide();
                     break;
+                case F2:
+                    rootPane.requestFocus();
+                    break;
             }
         });
         stage.setScene(scene);

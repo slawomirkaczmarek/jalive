@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane id="_background" fx:id="background" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <GridPane fx:id="canvas" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="360.0" prefWidth="640.0" style="-fx-vgap: 1em; -fx-background-color: transparent;">
+            <rowConstraints>
+                <RowConstraints prefHeight="80" />
+                <RowConstraints />
+            </rowConstraints>
+            <columnConstraints>
+                <ColumnConstraints percentWidth="100" />
+            </columnConstraints>
+            <children>
+                <Label id="_title" fx:id="title" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Label>
+                <Label id="_content" fx:id="content" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+               <font>
+                  <Font size="26.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin></Label>
+            </children>
+        </GridPane>
+    </children>
+</StackPane>
